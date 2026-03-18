@@ -14,17 +14,17 @@
 
         body, html { height: 100%; }
 
-        /* 背景圖片：恢復滿版不縮小 */
+        /* 背景圖片：已移除 IMG_ 並改為小寫 */
         .background {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('IMG_1632.JPG');
-            background-size: cover;         /* 滿版顯示 */
+            background-image: url('1632.jpg'); /* 這裡已經改好了 */
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             background-color: #1a1a1a;
             z-index: -1;
-            filter: brightness(0.7);        /* 稍微調暗以凸顯文字 */
+            filter: brightness(0.7);
         }
 
         /* 右上角地圖按鈕 */
@@ -40,7 +40,7 @@
             align-items: center;
             text-decoration: none;
             color: white;
-            background: rgba(0, 0, 0, 0.5); /* 加深背景確保可讀性 */
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 10px 18px;
@@ -53,7 +53,7 @@
         .map-link svg {
             margin-right: 8px;
             fill: #ffeb3b;
-            width: 24px;  /* 加大圖示 */
+            width: 24px;
             height: 24px;
         }
 
@@ -82,7 +82,6 @@
         ul { list-style: none; }
         li { margin-bottom: 15px; }
 
-        /* 按鈕：圖示在左，文字置中 */
         a.nav-btn {
             display: flex;
             align-items: center;      
@@ -102,11 +101,10 @@
             overflow: hidden;
         }
 
-        /* 換回 lower_icon.png 圖示樣式 */
         .nav-icon {
             position: absolute;        
             left: 20px;
-            width: 35px;               /* 圖示寬度 */
+            width: 35px;
             height: auto;
             pointer-events: none;
         }
@@ -131,11 +129,8 @@
             text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
-        /* 手機版優化 */
         @media (max-width: 480px) {
             .background { background-size: cover; } 
-            
-            /* 加大手機版地圖連結尺寸 */
             .map-tag { top: 15px; right: 15px; }
             .map-link {
                 padding: 12px 20px;
@@ -143,7 +138,6 @@
                 background: rgba(0, 0, 0, 0.6);
             }
             .map-link svg { width: 28px; height: 28px; }
-
             header h1 { font-size: 1.8rem; }
             a.nav-btn { font-size: 1.1rem; padding: 14px 20px; }
             .nav-icon { width: 30px; left: 15px; }
@@ -154,7 +148,6 @@
 
     <div class="background"></div>
 
-    <!-- 右上角地圖（手機版已放大） -->
     <div class="map-tag">
         <a href="https://maps.app.goo.gl/2N2X4HgWPJJM6CYW7" target="_blank" class="map-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q163 0 259.5 89T836-552q0 117-79.5 234.5T480-80Z"/></svg>
