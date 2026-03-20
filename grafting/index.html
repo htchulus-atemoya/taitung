@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>補苗與嫁接完整紀實 - 柏涵鳳梨釋迦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        body, html { height: 100%; color: white; background-color: #1a1a1a; }
+
+        /* 背景設定 - 已更新為上傳的照片並優化行動裝置顯示 */
+        .background {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            /* 使用您上傳的最新照片 */
+            background-image: url('../20260315_092534+0800-uid-17EF83A7-7982-4268-A120-B322770C2BA3-18233908.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center; /* 確保主體在中央 */
+            z-index: -1;
+            filter: brightness(0.4); /* 適度加深背景以凸顯文字 */
+        }
+
+        /* 返回按鈕 (回到上一層 index) */
+        .back-tag {
+            position: fixed;
+            top: 25px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            background: rgba(181, 211, 51, 0.2); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(181, 211, 51, 0.4);
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .back-link:hover {
+            background: rgba(181, 211, 51, 0.8);
+            color: #1a1a1a;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(181, 211, 51, 0.5);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,1);
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            border-bottom: 4px solid #b5d333;
+            display: inline-block;
+            padding-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .content-section {
+            background: rgba(0, 0, 0, 0.7); /* 調整透明度，讓背景稍微透出 */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .content-section h2 {
+            color: #b5d333;
+            margin-bottom: 25px;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h2::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 28px;
+            background: #b5d333;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .detail-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .detail-list li {
+            padding-left: 32px;
+            position: relative;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #f0f0f0;
+        }
+
+        .detail-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #b5d333;
+            font-weight: 900;
+        }
+
+        /* 圖片網格 */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            aspect-ratio: 4 / 3; 
+            border: 1px solid rgba(255,255,255,0.15);
+            background: #222;
+            transition: all 0.4s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-8px);
+            border-color: #b5d333;
+            box-shadow: 0 12px 30px rgba(181, 211, 51, 0.3);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            padding: 30px 15px 15px;
+            font-size: 1.15rem;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .step-badge {
+            background: #b5d333;
+            color: #1a1a1a;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-weight: 900;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+        }
+
+        /* 行動裝置優化 */
+        @media (max-width: 600px) {
+            .background {
+                /* 手機版背景圖片位置微調，確保主體不被遮擋 */
+                background-position: 60% center; 
+            }
+            .photo-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.6rem; padding-bottom: 8px; }
+            .content-section { padding: 20px; border-radius: 16px; }
+            .back-tag { top: 15px; left: 10px; }
+            .back-link { padding: 8px 16px; font-size: 0.85rem; }
+            .container { padding-top: 80px; }
+            .detail-list li { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="back-tag">
+        <a href="../index.html" class="back-link">
+            ← 返回 全紀錄
+        </a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>補苗與嫁接完整紀實</h1>
+        </header>
+
+        <section class="content-section">
+            <h2>實作流程說明</h2>
+            <ul class="detail-list">
+                <li><strong>第一步：購買好苗</strong> - 挑選健康強壯的果苗，確保果園的優良根基。</li>
+                <li><strong>第二步：挖洞</strong> - 挑合適位置挖掘深度適當的植樹坑。</li>
+                <li><strong>第三步：種樹苗</strong> - 將樹苗端正放入坑中，覆土澆濕讓根系發育。</li>
+                <li><strong>第四步：剪去實生枝</strong> - 將多餘實生枝條剪除，準備作為嫁接砧木。</li>
+                <li><strong>第五步：選穗</strong> - 挑選芽眼飽滿的優良接穗。</li>
+                <li><strong>第六步：切接</strong> - 精準切開砧木與削好接穗，完美對齊形成層。</li>
+                <li><strong>第七步：纏繞石蠟膜</strong> - 用膠帶緊密固定接穗，並纏繞石蠟膜以達到絕佳保濕效果。</li>
+                <li><strong>第八步：套袋</strong> - 外部套上防護紙袋，防曬防蟲害，等待新芽萌發。</li>
+            </ul>
+
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="20260315_091639+0800-uid-21014DA8-E2BD-46A1-8A95-28FC117D52FA-13616146.webp" alt="購買好苗" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">1</span>購買好苗</div>
+                </div>
+                
+                <div class="photo-item">
+                    <img src="20260315_083804+0800-uid-8CDD42FE-B1E5-4163-8E61-A37D12542F9B-18966849.webp" alt="挖洞" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">2</span>挖洞</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="tree.webp" alt="種樹苗" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">3</span>種樹苗</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260307_094139+0800-uid-8E9EC8FA-CDA8-4A64-B053-7787BF4658B3-12436368.webp" alt="剪去實生枝" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">4</span>剪去實生枝</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260307_095416+0800-uid-8C0F5D73-E731-4D40-A73C-E233CEEAAC51-8266999.webp" alt="選穗" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">5</span>選穗</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260307_094414+0800-uid-E061080E-F60B-436E-9E11-3906E7BFB9EA-7588534.webp" alt="切接" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">6</span>切接</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260307_101634+0800-uid-44A19802-6872-46A4-947A-FF36230B92EF-7314376.webp" alt="纏繞石蠟膜" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">7</span>纏繞石蠟膜</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260307_102234+0800-uid-6D4CE4B7-661C-4CFE-AB90-2442A7FD1332-9650990.webp" alt="套袋" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">8</span>套袋</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 柏涵鳳梨釋迦紀錄
+        </footer>
+    </div>
+
+</body>
+</html>

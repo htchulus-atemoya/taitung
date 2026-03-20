@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剪釋迦、載運與選果完整紀實 - 柏涵鳳梨釋迦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        body, html { 
+            height: 100%; 
+            color: white; 
+            background-color: #1a1a1a; 
+        }
+
+        /* 背景設定 - 修正連結為 webp */
+        .background {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            /* 背景圖片更新為指定照片並使用 webp 副檔名 */
+            background-image: url('../20260228_084509+0800-uid-1EC86F8B-FE39-4C8D-BEBF-D8D447CCA925-9305925.webp'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            z-index: -1;
+            filter: brightness(0.4); 
+        }
+
+        /* 返回按鈕 */
+        .back-tag {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        .back-tag a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 18px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .back-tag a:hover {
+            background: rgba(181, 211, 51, 0.85);
+            border-color: #b5d333;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        /* 主要內容容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 40px; 
+        }
+
+        /* 頁首標題區 */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        /* 階段區塊 */
+        .stage-section {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .stage-title {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: #b5d333; 
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            position: relative;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .stage-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #b5d333;
+            border-radius: 3px;
+        }
+
+        /* 照片網格 */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .photo-item {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+            border-color: #b5d333;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid rgba(181, 211, 51, 0.3);
+        }
+
+        /* 圖說區塊 */
+        .photo-caption {
+            padding: 20px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-align: left;
+        }
+
+        .step-badge {
+            background-color: #b5d333;
+            color: #1a1a1a;
+            min-width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        /* 頁尾 */
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 手機版優化排版 ===== */
+        @media (max-width: 768px) {
+            .background {
+                background-position: center center;
+            }
+            .container { 
+                padding-top: 85px; 
+            }
+            .header h1 { font-size: 1.8rem; }
+            .header p { font-size: 0.95rem; padding: 0 5px; }
+            
+            .stage-section { margin-bottom: 40px; }
+            .stage-title { font-size: 1.3rem; margin-bottom: 20px; }
+            
+            .gallery { gap: 15px; }
+            .photo-item { max-width: 100%; border-radius: 15px; } 
+            .photo-item img { height: 220px; }
+            
+            .back-tag { top: 15px; left: 15px; }
+            .back-tag a { padding: 6px 14px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景圖層 -->
+    <div class="background"></div>
+
+    <!-- 返回按鈕 -->
+    <div class="back-tag">
+        <a href="../index.html">← 返回主頁面</a>
+    </div>
+
+    <!-- 主要內容 -->
+    <div class="container">
+        <header class="header">
+            <h1>剪釋迦、載運與選果紀實</h1>
+            <p>從採收，到裝載運送，最後進行分級選果的完整流程，每一步都堅持品質把關。</p>
+        </header>
+
+        <!-- 階段一：剪果與採收 -->
+        <section class="stage-section">
+            <h2 class="stage-title">第一階段：剪果與採收</h2>
+            <div class="gallery">
+                <div class="photo-item">
+                    <img src="20260228_093426+0800-uid-256EC003-C9CC-4FBD-9D6D-489D8F2C1DEA-8787788.webp" alt="剪下成熟釋迦" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">1</span>確認達標後剪下成熟釋迦</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260228_094629+0800-uid-1C554F9D-4C25-44CD-9F10-7D6752DB77EA-11714975.webp" alt="豐收採果樂" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">2</span>體驗豐收採果樂，將鮮果裝籃</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 階段二：裝載與運送 -->
+        <section class="stage-section">
+            <h2 class="stage-title">第二階段：裝載與運送</h2>
+            <div class="gallery">
+                <div class="photo-item">
+                    <img src="20260228_091308+0800-uid-783BFCBA-77FF-4E16-B262-F20506D98C69-14091280.webp" alt="農用搬運車田間搬運" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">3</span>使用農用搬運車田間搬運</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260228_091931+0800-uid-36D0D82E-8540-4457-B8F4-07B154DB5C36-8436833.webp" alt="轉至貨車載運回家" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">4</span>轉至貨車載運回家</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 階段三：分級與選果 -->
+        <section class="stage-section">
+            <h2 class="stage-title">第三階段：分級與選果</h2>
+            <div class="gallery">
+                <div class="photo-item">
+                    <img src="20260228_104252+0800-uid-10A321AF-5D29-481F-B9AA-7C64840CD490-10212205.webp" alt="初步選果" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">5</span>卸下果實進行初步清潔與篩選</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="20260228_110145+0800-uid-7CA98F7E-2F5F-44E7-A04B-45434133C774-10234710.webp" alt="依等級分裝" loading="lazy">
+                    <div class="photo-caption"><span class="step-badge">6</span>依等級選果分類套蔬果網</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            &copy; 2026 柏涵鳳梨釋迦紀錄
+        </footer>
+    </div>
+
+</body>
+</html>

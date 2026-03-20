@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>補苗嫁接 - 柏涵鳳梨釋迦年度紀實</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        body, html { height: 100%; color: white; }
+
+        /* 延續主頁背景設定，需注意路徑回到上一層取圖 */
+        .background {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('../1632.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #1a1a1a;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        /* 返回按鈕 */
+        .back-tag {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            border-bottom: 3px solid #b5d333;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* 內容區塊卡片化 */
+        .content-section {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .content-section h2 {
+            color: #b5d333;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h2::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 24px;
+            background: #b5d333;
+            margin-right: 12px;
+            border-radius: 5px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            border: 1px dashed rgba(255,255,255,0.3);
+            color: #aaa;
+        }
+
+        .detail-list {
+            list-style: none;
+        }
+
+        .detail-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .detail-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #b5d333;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.8rem; }
+            .content-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="back-tag">
+        <!-- 修改處：更新返回連結文字 -->
+        <a href="../index.html" class="back-link">
+            ← 返回 柏涵鳳梨釋迦年度紀實
+        </a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>補苗嫁接紀錄</h1>
+        </header>
+
+        <section class="content-section">
+            <h2>作業背景</h2>
+            <p>
+                為了確保果園內鳳梨釋迦樹勢的整齊度，每年需針對生長不良或受損的幼苗進行更換（補苗）。同時，透過嫁接優質品種的接穗，可以確保果實的品質穩定與豐產。
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>重點流程</h2>
+            <ul class="detail-list">
+                <li>挑選健康砧木：選擇根系發達且適應台東土質的砧木。</li>
+                <li>精選接穗：採集前一年度豐產、果形端正的優良母樹接穗。</li>
+                <li>嫁接技術：採用切接法，確保形成層對齊以提高存活率。</li>
+                <li>後續照護：套袋保濕，並在發芽後適時鬆綁膠帶。</li>
+            </ul>
+            <div class="image-placeholder">
+                
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>年度筆記</h2>
+            <p>
+                今年的補苗率控制在理想範圍內，嫁接時間選擇在春初氣候回暖之際，成活表現良好。未來需持續觀測新芽生長情形，並適時給予水分補充。
+            </p>
+        </section>
+
+        <footer>
+            &copy; 2026 柏涵鳳梨釋迦紀錄 - 補苗嫁接專題
+        </footer>
+    </div>
+
+</body>
+</html>
