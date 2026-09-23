@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="BH-01 鳳梨釋迦候選株在臺東初鹿（高海拔丘陵）與臺東機場附近（低海拔平原）的跨環境嫁接生長、人工授粉幼果及自然授粉果實對照紀錄。" name="description"/>
+<title>BH-01 候選株｜跨環境嫁接與兩地結果觀察紀錄</title>
+<style>
+    :root {
+      --lime: #d8f06b;
+      --green: #b5d333;
+      --ink: #142016;
+      --panel: rgba(12, 24, 14, .86);
+      --line: rgba(255, 255, 255, .18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #fff;
+      background: #172018;
+      font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url("bha.webp");
+      background-size: cover;
+      background-position: 52% center;
+      background-repeat: no-repeat;
+    }
+    .background::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(3, 12, 5, .55), rgba(3, 12, 5, .78)),
+        rgba(0, 0, 0, .22);
+    }
+
+    .container {
+      width: min(1050px, 100%);
+      margin: auto;
+      padding: 48px 20px 80px;
+    }
+
+    header { text-align: center; margin-bottom: 30px; }
+    h1 {
+      display: inline-block;
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--green);
+      font-size: clamp(1.85rem, 5vw, 2.55rem);
+      line-height: 1.4;
+      text-shadow: 0 3px 16px #000;
+    }
+    .subtitle {
+      margin-top: 18px;
+      color: #eff7e9;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      text-shadow: 0 2px 9px #000;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, .28);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .intro {
+      max-width: 890px;
+      margin: 26px auto 42px;
+      padding: 26px 30px;
+      border-color: rgba(181, 211, 51, .48);
+      font-size: 1.03rem;
+      line-height: 1.9;
+    }
+    .intro p { margin: 0 0 12px; }
+    .intro p:last-child { margin-bottom: 0; }
+    strong { color: var(--lime); }
+
+    .quick-nav h2 { text-align: center; margin: 0 0 20px; }
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .nav-btn, .home-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 10px 16px;
+      color: #fff;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 999px;
+      text-align: center;
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 700;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      transition: .2s ease;
+    }
+    .nav-btn:hover, .nav-btn:focus-visible,
+    .home-btn:hover, .home-btn:focus-visible {
+      color: var(--ink);
+      background: rgba(216, 240, 107, .95);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .section {
+      scroll-margin-top: 20px;
+      margin: 42px 0;
+      padding: 32px;
+    }
+    .section-title {
+      margin: 0 0 18px;
+      padding-left: 12px;
+      border-left: 5px solid var(--green);
+      color: var(--lime);
+      font-size: 1.62rem;
+    }
+    .section > p { margin: 0 0 16px; line-height: 1.9; }
+
+    .env-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0 10px;
+    }
+    .env-card {
+      padding: 20px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .env-card h3 { margin: 0 0 10px; color: var(--lime); font-size: 1.2rem; }
+    .env-card ul { margin: 0; padding-left: 20px; line-height: 1.8; color: #e1ebd9; }
+
+    .taitung-map { max-width: 680px; margin: 12px auto 4px; }
+    .taitung-map svg { display: block; width: 100%; height: auto; }
+    .quiet { color: #ccd7c5; font-size: .88rem; text-align: center; }
+
+    .collage-note {
+      margin: 16px 0 24px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(181, 211, 51, .12);
+      line-height: 1.8;
+    }
+
+    .composite-group { max-width: 850px; margin: 30px auto; }
+    .composite-card {
+      overflow: hidden;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+    }
+    
+    /* CSS Grid 無損合成圖樣式 */
+    .css-collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      background: #101b12;
+      padding: 4px;
+    }
+    .css-collage img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      cursor: zoom-in;
+      transition: filter 0.2s;
+    }
+    .css-collage img:hover {
+      filter: brightness(1.1);
+    }
+    
+    .single-composite-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/2;
+      object-fit: contain;
+      background: #101b12;
+      cursor: zoom-in;
+    }
+    
+    .composite-placeholder {
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.025));
+    }
+    .composite-placeholder strong { display: inline-block; margin: 10px 0; color: var(--lime); font-size: 1.1rem; }
+    .photo-info { padding: 16px; text-align: center; border-top: 1px solid var(--line); }
+    .photo-info h3 { margin: 0 0 6px; color: var(--lime); font-size: 1.15rem; }
+    .photo-info p { margin: 0; color: #ccd7c5; font-size: .95rem; }
+
+    .home-area { display: flex; justify-content: center; margin-top: 52px; }
+    .home-btn { display: inline-flex; color: var(--ink); background: rgba(216, 240, 107, .92); }
+    footer {
+      margin-top: 55px;
+      color: #e0e4de;
+      text-align: center;
+      font-size: .9rem;
+      line-height: 1.8;
+      text-shadow: 0 2px 7px #000;
+    }
+
+    dialog {
+      width: min(1100px, 95vw);
+      max-height: 95vh;
+      background: #122016;
+      color: white;
+      border: 1px solid #9bb96a;
+      border-radius: 12px;
+      padding: 15px;
+    }
+    dialog::backdrop { background: rgba(0, 0, 0, .85); }
+    dialog img { display: block; max-width: 100%; max-height: 78vh; margin: auto; }
+    dialog button { padding: 8px 18px; cursor: pointer; background: var(--green); border: none; border-radius: 6px; font-weight: bold; }
+    .close-row { text-align: right; margin-bottom: 8px; }
+
+    @media (max-width: 700px) {
+      .container { padding: 34px 14px 58px; }
+      .nav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .env-grid { grid-template-columns: 1fr; }
+      .section { margin: 32px 0; padding: 22px 16px; }
+      .section-title { font-size: 1.35rem; }
+      .composite-placeholder { min-height: 220px; }
+      .css-collage { grid-template-columns: repeat(2, 1fr); }
+      .css-collage-3 { grid-template-columns: 1fr; } 
+    }
+
+    [hidden] { display: none !important; }
+  </style>
+<link rel="stylesheet" href="../site-enhancements.css">
+</head>
+<body>
+<div aria-hidden="true" class="background"></div>
+<main class="container">
+<header>
+<h1>BH-01 候選株<br/>異地嫁接與授粉觀察紀錄</h1>
+<div class="subtitle">比較不同栽培環境下的嫁接生長，並記錄人工授粉與自然授粉之果實表現</div>
+</header>
+<section class="intro glass">
+<p>本頁記錄 <strong>BH-01 鳳梨釋迦候選株</strong> 在無原始株照片情況下，於臺東兩處不同栽培環境的嫁接觀察紀錄。</p>
+<p>分別位於<strong>初鹿原始果園</strong>與距離約 10 公里外的<strong>臺東機場附近果園</strong>。所有展出植株均為嫁接株，紀錄包含嫁接後半年、1 年半及 2 年半之生長情形，以及大目釋迦花粉人工授粉與自然授粉果實之觀察。人工授粉區以相同花粉來源進行候選株與一般株對照；自然授粉區則作為補充觀察。</p>
+</section>
+<nav aria-label="照片導覽" class="quick-nav">
+<div class="nav-grid"><a class="nav-btn" href="#places">兩地環境驗證</a><a class="nav-btn" href="#comparison">候選株與一般株</a><a class="nav-btn" href="#chulu-fruit">初鹿人工授粉幼果</a><a class="nav-btn" href="#airport-fruit">機場人工授粉幼果</a><a class="nav-btn" href="#natural">自然授粉補充觀察</a><a class="nav-btn" href="#chulu">初鹿生長紀錄</a><a class="nav-btn" href="#airport">機場生長紀錄</a></div>
+</nav>
+<!-- 區塊 1：環境對比 -->
+
+<!-- 區塊 1.5：一般株與候選株對照 (移至地圖後方) -->
+
+<!-- 區塊 6：自然授粉果實對比 (已移至地圖與一般對照後方) -->
+
+<!-- 區塊 2：初鹿生長紀錄 -->
+
+<!-- 區塊 3：機場附近生長紀錄 -->
+
+<!-- 區塊 4：初鹿幼果比較 -->
+
+<!-- 區塊 5：機場附近幼果比較 -->
+
+<section class="section glass" id="places">
+<h2 class="section-title">兩地環境比較與嫁接驗證</h2>
+<div class="env-grid">
+<div class="env-card">
+<h3>⛰️ 初鹿原始果園</h3>
+<ul>
+<li><strong>海拔標高：</strong>約 180 ~ 200 公尺</li>
+<li><strong>微氣候特徵：</strong>山腳丘陵地形，夜間降溫明顯、日夜溫差較大、通風良好。</li>
+</ul>
+</div>
+<div class="env-card">
+<h3>✈️ 臺東機場附近果園</h3>
+<ul>
+<li><strong>海拔標高：</strong>約 20 ~ 30 公尺</li>
+<li><strong>微氣候特徵：</strong>平原海岸氣候，相對氣溫較高、日照充足。</li>
+</ul>
+</div>
+</div>
+<div aria-label="臺東初鹿與機場附近兩果園位置示意圖" class="taitung-map" role="img">
+<svg aria-hidden="true" viewbox="0 0 760 380" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="mapBg" x1="0" x2="1" y1="0" y2="1">
+<stop stop-color="#1e3a24"></stop><stop offset="1" stop-color="#122216"></stop>
+</lineargradient>
+</defs>
+<rect fill="url(#mapBg)" height="380" rx="16" stroke="rgba(255,255,255,0.1)" width="760"></rect>
+<path d="M180 100 L580 280" fill="none" stroke="#d8f06b" stroke-dasharray="6 8" stroke-width="4"></path>
+<g transform="translate(180 100)">
+<circle fill="#b5d333" opacity="0.2" r="28"></circle>
+<circle fill="#d8f06b" r="12"></circle>
+<text fill="#d8f06b" font-size="18" font-weight="700" text-anchor="middle" x="0" y="-22">初鹿原始果園</text>
+<text fill="#fff" font-size="14" text-anchor="middle" x="0" y="32">海拔約 180~200m</text>
+</g>
+<g transform="translate(380 190)">
+<rect fill="#142016" height="44" rx="22" stroke="#b5d333" width="160" x="-80" y="-22"></rect>
+<text fill="#d8f06b" font-size="15" font-weight="700" text-anchor="middle" x="0" y="5">距離約 10 公里</text>
+</g>
+<g transform="translate(580 280)">
+<circle fill="#6878e8" opacity="0.2" r="28"></circle>
+<circle fill="#6878e8" r="12"></circle>
+<text fill="#8ea2ff" font-size="18" font-weight="700" text-anchor="middle" x="0" y="-22">臺東機場附近果園</text>
+<text fill="#fff" font-size="14" text-anchor="middle" x="0" y="32">海拔約 20~30m</text>
+</g>
+</svg>
+</div>
+</section><section class="section glass" id="comparison">
+<h2 class="section-title">一般株與候選株｜生長勢對比</h2>
+<div class="group composite-group">
+<figure class="composite-card">
+<div class="css-collage" style="grid-template-columns: repeat(3, 1fr);">
+<img alt="一般鳳梨釋迦 嫁接0.5年生長情形" src="0.5-1.webp"/ decoding="async" width="1800" height="2400" srcset="0.5-1-thumb.webp 480w, 0.5-1.webp 1800w" sizes="(max-width:700px) 44vw, 300px" loading="eager" fetchpriority="high">
+<img alt="一般鳳梨釋迦 嫁接1.5年生長情形" src="1.5-2.webp"/ decoding="async" width="2065" height="2400" srcset="1.5-2-thumb.webp 551w, 1.5-2.webp 2065w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="候選株 1.5年 與 一般株 1.5年 同框對照" src="t1.webp"/ decoding="async" width="2394" height="2400" srcset="t1-thumb.webp 638w, t1.webp 2394w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>一般鳳梨釋迦｜對照組生長紀錄 (3張)</h3>
+<p>左起：一般株嫁接 0.5 年、一般株嫁接 1.5 年、候選株(左)與一般株(右) 1.5 年同框對照</p>
+</figcaption>
+</figure>
+</div>
+</section><section class="section glass" id="chulu-fruit">
+<h2 class="section-title">初鹿原始果園｜大目釋迦花粉人工授粉幼果比較</h2>
+<p>兩者皆使用<strong>大目釋迦花粉</strong>進行人工授粉，觀察發育初期之果型、果棘與著果表現。</p>
+<div class="group composite-group">
+<h3>BH-01 候選株幼果 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="初鹿果園 BH-01候選株幼果 1" src="fruit/bhf-1.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/bhf-1-thumb.webp 640w, fruit/bhf-1.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 BH-01候選株幼果 2" src="fruit/bhf-2.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/bhf-2-thumb.webp 640w, fruit/bhf-2.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 BH-01候選株幼果 3" src="fruit/bhf-3.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/bhf-3-thumb.webp 640w, fruit/bhf-3.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 BH-01候選株幼果 4" src="fruit/bhf-4.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/bhf-4-thumb.webp 640w, fruit/bhf-4.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 BH-01候選株幼果 5" src="fruit/bhf-5.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/bhf-5-thumb.webp 640w, fruit/bhf-5.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 BH-01候選株幼果 6" src="fruit/bhf-6.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/bhf-6-thumb.webp 640w, fruit/bhf-6.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>BH-01 候選株幼果｜初鹿</h3>
+<p>大目花粉授粉成功，幼果果棘排列整齊、發育良好</p>
+</figcaption>
+</figure>
+</div>
+<div class="group composite-group">
+<h3>一般株幼果 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="初鹿果園 一般株幼果 1" src="fruit/f1.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/f1-thumb.webp 640w, fruit/f1.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 一般株幼果 2" src="fruit/f2.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/f2-thumb.webp 640w, fruit/f2.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 一般株幼果 3" src="fruit/f3.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/f3-thumb.webp 640w, fruit/f3.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 一般株幼果 4" src="fruit/f4.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/f4-thumb.webp 640w, fruit/f4.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 一般株幼果 5" src="fruit/f5.webp"/ decoding="async" width="2400" height="1951" srcset="fruit/f5-thumb.webp 640w, fruit/f5.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 一般株幼果 6" src="fruit/f6.webp"/ decoding="async" width="2400" height="1800" srcset="fruit/f6-thumb.webp 640w, fruit/f6.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>一般株幼果｜初鹿對照組</h3>
+<p>同果園、同花粉來源下之對照幼果外觀</p>
+</figcaption>
+</figure>
+</div>
+</section><section class="section glass" id="airport-fruit">
+<h2 class="section-title">臺東機場附近｜大目釋迦花粉人工授粉幼果比較</h2>
+<p>記錄低海拔平原環境下，BH-01 候選株與一般株經大目釋迦花粉人工授粉後之幼果外觀與發育情形。</p>
+<div class="group composite-group">
+<h3>BH-01 候選株幼果 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="機場果園 BH-01候選株幼果 1" src="fruit/bhaf-1.webp"/ decoding="async" width="2267" height="1593" srcset="fruit/bhaf-1-thumb.webp 640w, fruit/bhaf-1.webp 2267w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 BH-01候選株幼果 2" src="fruit/bhaf-2.webp"/ decoding="async" width="2137" height="1592" srcset="fruit/bhaf-2-thumb.webp 640w, fruit/bhaf-2.webp 2137w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 BH-01候選株幼果 3" src="fruit/bhaf-3.webp"/ decoding="async" width="1741" height="1294" srcset="fruit/bhaf-3-thumb.webp 640w, fruit/bhaf-3.webp 1741w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 BH-01候選株幼果 4" src="fruit/bhaf-4.webp"/ decoding="async" width="1862" height="1505" srcset="fruit/bhaf-4-thumb.webp 640w, fruit/bhaf-4.webp 1862w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 BH-01候選株幼果 5" src="fruit/bhaf-5.webp"/ decoding="async" width="1539" height="1369" srcset="fruit/bhaf-5-thumb.webp 640w, fruit/bhaf-5.webp 1539w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 BH-01候選株幼果 6" src="fruit/bhaf-6.webp"/ decoding="async" width="1878" height="1527" srcset="fruit/bhaf-6-thumb.webp 640w, fruit/bhaf-6.webp 1878w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>BH-01 候選株幼果｜機場附近</h3>
+<p>低海拔授粉結實率與幼果膨大表現</p>
+</figcaption>
+</figure>
+</div>
+<div class="group composite-group">
+<h3>一般株幼果 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="機場果園 一般株幼果 1" src="fruit/afr-1.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/afr-1-thumb.webp 480w, fruit/afr-1.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 一般株幼果 2" src="fruit/afr-2.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/afr-2-thumb.webp 480w, fruit/afr-2.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 一般株幼果 3" src="fruit/afr-3.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/afr-3-thumb.webp 480w, fruit/afr-3.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 一般株幼果 4" src="fruit/afr-4.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/afr-4-thumb.webp 480w, fruit/afr-4.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 一般株幼果 5" src="fruit/afr-5.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/afr-5-thumb.webp 480w, fruit/afr-5.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 一般株幼果 6" src="fruit/afr-6.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/afr-6-thumb.webp 480w, fruit/afr-6.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>一般株幼果｜機場附近對照組</h3>
+<p>低海拔果園環境下一般株之著果狀況紀錄</p>
+</figcaption>
+</figure>
+</div>
+</section><section class="section glass" id="natural">
+<h2 class="section-title">自然授粉果實比較（嫁接 1 年半）</h2>
+<p>記錄嫁接 1 年半植株於未人工授粉條件下，已結實果實之外觀與發育情形。</p>
+<div class="group composite-group">
+<h3>BH-01 候選株自然授粉果實 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="BH-01候選株 1年半自然授粉果實 1" src="fruit/bhafr-1.webp"/ decoding="async" width="2400" height="1350" srcset="fruit/bhafr-1-thumb.webp 640w, fruit/bhafr-1.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="BH-01候選株 1年半自然授粉果實 2" src="fruit/bhafr-2.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/bhafr-2-thumb.webp 480w, fruit/bhafr-2.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="BH-01候選株 1年半自然授粉果實 3" src="fruit/bhafr-3.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/bhafr-3-thumb.webp 480w, fruit/bhafr-3.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="BH-01候選株 1年半自然授粉果實 4" src="fruit/bhafr-4.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/bhafr-4-thumb.webp 480w, fruit/bhafr-4.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="BH-01候選株 1年半自然授粉果實 5" src="fruit/bhafr-5.webp"/ decoding="async" width="1631" height="2400" srcset="fruit/bhafr-5-thumb.webp 435w, fruit/bhafr-5.webp 1631w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="BH-01候選株 1年半自然授粉果實 6" src="fruit/bhafr-6.webp"/ decoding="async" width="1800" height="2400" srcset="fruit/bhafr-6-thumb.webp 480w, fruit/bhafr-6.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>BH-01 候選株｜自然授粉果實</h3>
+<p>觀察自然授粉條件下之果形、果目形態與果實發育情形</p>
+</figcaption>
+</figure>
+</div>
+<div class="group composite-group"><h3>一般株自然授粉對照</h3><div class="collage-note"><strong>資料狀態：</strong>目前此資料夾未包含一般株自然授粉的 6 張原始照片，因此本版先不進行直接果形比較；待補入同株齡、同時期照片後再做對照，避免以不完整影像下結論。</div></div>
+<div class="collage-note"><strong>後續觀察：</strong>同一候選株在自然授粉與大目釋迦花粉人工授粉條件下，果實外觀呈現若干差異；目前尚無法區分係授粉完整度、花粉來源或個體果實變異所致，後續將以控制花粉來源方式持續比較。</div></section><section class="section glass" id="chulu">
+<h2 class="section-title">初鹿原始果園｜嫁接生長紀錄</h2>
+<div class="collage-note"><strong>照片呈現方式：</strong>本區採用高畫質無損網格排列，點擊任一圖片皆可放大查看最清晰原始細節。</div>
+<div class="group composite-group">
+<h3>嫁接後 半年 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="初鹿果園 嫁接半年生長情形 (植株 1)" src="bh0.5-1.webp"/ decoding="async" width="2400" height="1800" srcset="bh0.5-1-thumb.webp 640w, bh0.5-1.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接半年生長情形 (植株 2)" src="bh0.5-2.webp"/ decoding="async" width="2400" height="1800" srcset="bh0.5-2-thumb.webp 640w, bh0.5-2.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接半年生長情形 (植株 3)" src="bh0.5-3.webp"/ decoding="async" width="2400" height="1800" srcset="bh0.5-3-thumb.webp 640w, bh0.5-3.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接半年生長情形 (植株 4)" src="bh0.5-4.webp"/ decoding="async" width="2400" height="1800" srcset="bh0.5-4-thumb.webp 640w, bh0.5-4.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接半年生長情形 (植株 5)" src="bh0.5-5.webp"/ decoding="async" width="2400" height="1800" srcset="bh0.5-5-thumb.webp 640w, bh0.5-5.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接半年生長情形 (植株 6)" src="bh0.5-6.webp"/ decoding="async" width="2400" height="1800" srcset="bh0.5-6-thumb.webp 640w, bh0.5-6.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>BH-01 初鹿｜嫁接後半年</h3>
+<p>觀察嫁接部位癒合、新梢萌發與初期生長情形</p>
+</figcaption>
+</figure>
+</div>
+<div class="group composite-group">
+<h3>嫁接後 1 年半 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="初鹿果園 嫁接1年半生長情形 (植株 1)" src="bh1.5-1.webp"/ decoding="async" width="2400" height="1800" srcset="bh1.5-1-thumb.webp 640w, bh1.5-1.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接1年半生長情形 (植株 2)" src="bh1.5-2.webp"/ decoding="async" width="2400" height="1800" srcset="bh1.5-2-thumb.webp 640w, bh1.5-2.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接1年半生長情形 (植株 3)" src="bh1.5-3.webp"/ decoding="async" width="2400" height="1800" srcset="bh1.5-3-thumb.webp 640w, bh1.5-3.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接1年半生長情形 (植株 4)" src="bh1.5-4.webp"/ decoding="async" width="2400" height="1800" srcset="bh1.5-4-thumb.webp 640w, bh1.5-4.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接1年半生長情形 (植株 5)" src="bh1.5-5.webp"/ decoding="async" width="2400" height="1800" srcset="bh1.5-5-thumb.webp 640w, bh1.5-5.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接1年半生長情形 (植株 6)" src="bh1.5-6.webp"/ decoding="async" width="2400" height="1800" srcset="bh1.5-6-thumb.webp 640w, bh1.5-6.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>BH-01 初鹿｜嫁接後 1 年半</h3>
+<p>樹冠開展情形、主幹粗度與分枝型態紀錄</p>
+</figcaption>
+</figure>
+</div>
+<div class="group composite-group">
+<h3>嫁接後 2 年半 (3張)</h3>
+<figure class="composite-card">
+<div class="css-collage" style="grid-template-columns: repeat(3, 1fr);">
+<img alt="初鹿果園 嫁接2年半生長情形 (植株 1)" src="bh2.5-1.webp"/ decoding="async" width="2400" height="1800" srcset="bh2.5-1-thumb.webp 640w, bh2.5-1.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接2年半生長情形 (植株 2)" src="bh2.5-2.webp"/ decoding="async" width="2400" height="1800" srcset="bh2.5-2-thumb.webp 640w, bh2.5-2.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="初鹿果園 嫁接2年半生長情形 (植株 3)" src="bh2.5-3.webp"/ decoding="async" width="2400" height="1800" srcset="bh2.5-3-thumb.webp 640w, bh2.5-3.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>BH-01 初鹿｜嫁接後 2 年半</h3>
+<p>進入結果期後之樹勢、樹冠與結果枝生長情形</p>
+</figcaption>
+</figure>
+</div>
+</section><section class="section glass" id="airport">
+<h2 class="section-title">臺東機場附近｜嫁接生長紀錄</h2>
+<p>記錄低海拔平原果園環境下，BH-01 嫁接植株之成長變化。</p>
+<div class="group composite-group">
+<h3>嫁接後 半年 (3張)</h3>
+<figure class="composite-card">
+<div class="css-collage" style="grid-template-columns: repeat(3, 1fr);">
+<img alt="機場果園 嫁接半年生長情形 (植株 1)" src="bha0.5-1.webp"/ decoding="async" width="2400" height="1800" srcset="bha0.5-1-thumb.webp 640w, bha0.5-1.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 嫁接半年生長情形 (植株 2)" src="bha0.5-2.webp"/ decoding="async" width="2400" height="1800" srcset="bha0.5-2-thumb.webp 640w, bha0.5-2.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 嫁接半年生長情形 (植株 3)" src="bha0.5-3.webp"/ decoding="async" width="2400" height="1800" srcset="bha0.5-3-thumb.webp 640w, bha0.5-3.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>機場附近｜嫁接後半年</h3>
+<p>平原環境下抽芽速度與新梢生長狀況</p>
+</figcaption>
+</figure>
+</div>
+<div class="group composite-group">
+<h3>嫁接後 1 年半 (6張)</h3>
+<figure class="composite-card">
+<div class="css-collage">
+<img alt="機場果園 嫁接1年半生長情形 (植株 1)" src="bha1.5-1.webp"/ decoding="async" width="1800" height="2400" srcset="bha1.5-1-thumb.webp 480w, bha1.5-1.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 嫁接1年半生長情形 (植株 2)" src="bha1.5-2.webp"/ decoding="async" width="2400" height="1800" srcset="bha1.5-2-thumb.webp 640w, bha1.5-2.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 嫁接1年半生長情形 (植株 3)" src="bha1.5-3.webp"/ decoding="async" width="2400" height="1800" srcset="bha1.5-3-thumb.webp 640w, bha1.5-3.webp 2400w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 嫁接1年半生長情形 (植株 4)" src="bha1.5-4.webp"/ decoding="async" width="1800" height="2400" srcset="bha1.5-4-thumb.webp 480w, bha1.5-4.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 嫁接1年半生長情形 (植株 5)" src="bha1.5-5.webp"/ decoding="async" width="1800" height="2400" srcset="bha1.5-5-thumb.webp 480w, bha1.5-5.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+<img alt="機場果園 嫁接1年半生長情形 (植株 6)" src="bha1.5-6.webp"/ decoding="async" width="1800" height="2400" srcset="bha1.5-6-thumb.webp 480w, bha1.5-6.webp 1800w" sizes="(max-width:700px) 44vw, 300px">
+</div>
+<figcaption class="photo-info">
+<h3>機場附近｜嫁接後 1 年半</h3>
+<p>兩地相同株齡下樹幹粗度與枝條展開度之對比參考</p>
+</figcaption>
+</figure>
+</div>
+</section><div class="home-area">
+<a class="home-btn" href="../index.html">← 返回總覽</a>
+</div>
+<footer>
+      BH-01 候選株｜跨環境嫁接與兩地結果觀察紀錄<br/>紀錄與製作
+    </footer>
+</main>
+<dialog aria-label="照片放大檢視" id="viewer">
+<div class="close-row">
+<button id="close-viewer" type="button">關閉視窗</button>
+</div>
+<img alt="" id="full-photo"/ decoding="async">
+<p id="photo-caption" style="text-align:center; margin-top:10px; color:#d8f06b;"></p>
+</dialog>
+<script>
+    const viewer = document.getElementById('viewer');
+    const fullPhoto = document.getElementById('full-photo');
+    const photoCaption = document.getElementById('photo-caption');
+
+    document.querySelectorAll('.css-collage img, .single-composite-img').forEach(img => {
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      function show() {
+        if (img.hidden) return;
+        fullPhoto.src = img.src;
+        fullPhoto.alt = img.alt;
+        photoCaption.textContent = img.alt;
+        viewer.showModal();
+      }
+      img.addEventListener('click', show);
+      img.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          show();
+        }
+      });
+    });
+
+    document.getElementById('close-viewer').addEventListener('click', () => viewer.close());
+    viewer.addEventListener('click', e => {
+      if (e.target === viewer) viewer.close();
+    });
+  </script>
+<script src="../site-enhancements.js" defer></script>
+</body>
+</html>
