@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柏涵鳳梨釋迦年度紀實</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        body, html { height: 100%; }
+
+        /* 背景圖片 - 已更新為 1632.webp */
+        .background {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('1632.webp');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #1a1a1a;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #b5d333;
+            padding-bottom: 10px;
+        }
+
+        nav { width: 100%; max-width: 450px; }
+        ul { list-style: none; }
+        li { margin-bottom: 15px; }
+
+        a.nav-btn {
+            display: flex;
+            align-items: center;      
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;        
+            overflow: hidden;
+        }
+
+        .nav-icon {
+            position: absolute;        
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%); /* 加上垂直置中，確保不同大小的圖示都在按鈕中間 */
+            width: 35px;
+            height: auto;
+            pointer-events: none;
+        }
+
+        /* 預設的花（lower_icon）尺寸調小 */
+        .icon-default {
+            width: 26px;
+        }
+
+        /* 移到選單時顯示的釋迦（open）尺寸調大 */
+        .icon-hover {
+            display: none;
+            width: 44px;
+        }
+
+        /* 當滑鼠移到選單（a.nav-btn:hover）時的切換隱現邏輯 */
+        a.nav-btn:hover .icon-default {
+            display: none; /* 隱藏花（lower_icon） */
+        }
+        a.nav-btn:hover .icon-hover {
+            display: block; /* 顯示釋迦（open） */
+        }
+
+        .svg-icon {
+            fill: #ff4d4d;
+            transition: 0.3s;
+        }
+
+        a.nav-btn span {
+            display: inline-block;
+            text-align: center;
+        }
+
+        a.nav-btn:hover {
+            background: rgba(181, 211, 51, 0.9);
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            color: #1a1a1a;
+        }
+        
+        a.nav-btn:hover .svg-icon {
+            fill: #1a1a1a;
+        }
+
+        footer {
+            margin-top: auto;
+            color: white;
+            padding: 20px;
+            font-size: 0.85rem;
+            text-align: center;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.8rem; }
+            a.nav-btn { font-size: 1.1rem; padding: 14px 20px; }
+            .nav-icon { left: 15px; width: 30px; }
+            /* 手機版同步調整比例 */
+            .icon-default { width: 22px; }
+            .icon-hover { width: 36px; }
+        }
+    </style>
+<link rel="stylesheet" href="site-enhancements.css">
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="container">
+        <header>
+            <h1>柏涵鳳梨釋迦年度紀實</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=oej3MVa_N0A&list=PLZH3u_BLcDWiX25S_5QdyvVj45k8tM7To&index=2" target="_blank" rel="noopener noreferrer" class="nav-btn video-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="nav-icon svg-icon">
+                            <path d="M840-680q-11-40-42-71t-71-42q-61-17-247-17t-247 17q-40 11-71 42t-42 71q-17 61-17 200t17 200q11 40 42 71t71 42q61 17 247 17t247-17q40-11 71-42t42-71q17-61 17-200t-17-200Zm-460 360v-320l280 160-280 160Z"/>
+                        </svg>
+                        <span>祖父母經驗傳承影片</span>
+                    </a>
+                </li>
+                
+                <!-- 新增的：鳳梨與大目比較 -->
+                <li><a href="compare/index.html" class="nav-btn"><img src="lower_icon.webp" class="nav-icon icon-default" decoding="async" alt="" width="408" height="1037" loading="eager" fetchpriority="high"><img src="open.webp" class="nav-icon icon-hover" decoding="async" alt="" width="1298" height="1600"><span>鳳梨釋迦與大目釋迦比較</span></a></li>
+                
+                <li><a href="grafting/index.html" class="nav-btn"><img src="lower_icon.webp" class="nav-icon icon-default" decoding="async" alt="" width="408" height="1037"><img src="open.webp" class="nav-icon icon-hover" decoding="async" alt="" width="1298" height="1600"><span>補苗嫁接</span></a></li>
+                <li><a href="pruning/index.html" class="nav-btn"><img src="lower_icon.webp" class="nav-icon icon-default" decoding="async" alt="" width="408" height="1037"><img src="open.webp" class="nav-icon icon-hover" decoding="async" alt="" width="1298" height="1600"><span>強剪與催芽期</span></a></li>
+                <li><a href="flowering-and-pollination/index.html" class="nav-btn"><img src="lower_icon.webp" class="nav-icon icon-default" decoding="async" alt="" width="408" height="1037"><img src="open.webp" class="nav-icon icon-hover" decoding="async" alt="" width="1298" height="1600"><span>花期與人工授粉</span></a></li>
+                <li><a href="fruit development/index.html" class="nav-btn"><img src="lower_icon.webp" class="nav-icon icon-default" decoding="async" alt="" width="408" height="1037"><img src="open.webp" class="nav-icon icon-hover" decoding="async" alt="" width="1298" height="1600"><span>果實發育</span></a></li>
+                <li><a href="pest-control-and-bagging/index.html" class="nav-btn"><img src="lower_icon.webp" class="nav-icon icon-default" decoding="async" alt="" width="408" height="1037"><img src="open.webp" class="nav-icon icon-hover" decoding="async" alt="" width="1298" height="1600"><span>病蟲害防治與套袋</span></a></li>
+                <li><a href="harvesting-and-grading/index.html" class="nav-btn"><img src="lower_icon.webp" class="nav-icon icon-default" decoding="async" alt="" width="408" height="1037"><img src="open.webp" class="nav-icon icon-hover" decoding="async" alt="" width="1298" height="1600"><span>採收與分級</span></a></li>
+            </ul>
+        </nav>
+
+        <footer>
+            &copy; 柏涵鳳梨釋迦紀錄
+        </footer>
+    </div>
+
+<script src="site-enhancements.js" defer></script>
+</body>
+</html>

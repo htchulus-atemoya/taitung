@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柏涵鳳梨釋迦年度紀實</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        /* 背景圖片 */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background-image: url('1632.webp');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            background-color: #1a1a1a;
+            z-index: -1;
+
+            filter: brightness(0.7);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+
+            color: white;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #b5d333;
+            padding-bottom: 10px;
+        }
+
+        /* 副標題小字樣式 */
+        header p.subtitle {
+            font-size: 0.95rem;
+            margin-top: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: normal;
+            letter-spacing: 0.8px;
+            line-height: 1.5;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        a.nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+            color: #fff;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            padding: 15px 20px;
+
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            transition: 0.3s;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 所有左側圖示 */
+        .nav-icon {
+            position: absolute;
+
+            left: 20px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 35px;
+            height: auto;
+
+            pointer-events: none;
+        }
+
+        /* 一般按鈕原始小花 */
+        .icon-default {
+            width: 26px;
+        }
+
+        /* 一般按鈕滑鼠移入後顯示的果實 */
+        .icon-hover {
+            display: none;
+            width: 44px;
+        }
+
+        /* BH-01 候選株專用圖示尺寸與位置調整 */
+        .candidate-icon {
+            left: 8px;
+        }
+
+        .candidate-icon.icon-default {
+            width: 42px;
+        }
+
+        .candidate-icon.icon-hover {
+            width: 56px;
+        }
+
+        /* 選單 hover 圖示切換 */
+        a.nav-btn:hover .icon-default {
+            display: none;
+        }
+
+        a.nav-btn:hover .icon-hover {
+            display: block;
+        }
+
+        /* YouTube 圖示 */
+        .svg-icon {
+            fill: #ff4d4d;
+            transition: 0.3s;
+        }
+
+        a.nav-btn span {
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* 按鈕滑鼠效果 */
+        a.nav-btn:hover {
+            background: rgba(181, 211, 51, 0.9);
+
+            transform: scale(1.03);
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+
+            color: #1a1a1a;
+        }
+
+        a.nav-btn:hover .svg-icon {
+            fill: #1a1a1a;
+        }
+
+        footer {
+            margin-top: auto;
+
+            color: white;
+
+            padding: 20px;
+
+            font-size: 0.85rem;
+
+            text-align: center;
+
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* 手機版 */
+        @media (max-width: 480px) {
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p.subtitle {
+                font-size: 0.85rem;
+                margin-top: 10px;
+            }
+
+            a.nav-btn {
+                font-size: 1.1rem;
+                padding: 14px 20px;
+            }
+
+            .nav-icon {
+                left: 15px;
+                width: 30px;
+            }
+
+            .icon-default {
+                width: 22px;
+            }
+
+            .icon-hover {
+                width: 36px;
+            }
+
+            .candidate-icon {
+                left: 8px;
+            }
+
+            .candidate-icon.icon-default {
+                width: 34px;
+            }
+
+            .candidate-icon.icon-hover {
+                width: 46px;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="site-enhancements.css">
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <div class="container">
+
+        <header>
+            <h1>柏涵鳳梨釋迦年度紀實</h1>
+            <p class="subtitle">從家中果園出發，觀察不同海拔與栽培環境下的生長、授粉與果實發育表現</p>
+        </header>
+
+        <nav>
+            <ul>
+
+                <!-- 第一個：BH-01 候選株 -->
+                <li>
+                    <a href="candidate/index.html" class="nav-btn">
+
+                        <img
+                            src="bhf.webp"
+                            class="nav-icon icon-default candidate-icon"
+                            alt="BH-01 候選株"
+                         decoding="async" width="1024" height="1536" loading="eager" fetchpriority="high">
+
+                        <img
+                            src="bh.webp"
+                            class="nav-icon icon-hover candidate-icon"
+                            alt="BH-01 候選株"
+                         decoding="async" width="1218" height="1291">
+
+                        <span>
+                            BH-01 候選株觀察紀錄
+                        </span>
+
+                    </a>
+                </li>
+
+
+                <!-- 祖父母傳承影片 -->
+                <li>
+
+                    <a
+                        href="https://www.youtube.com/watch?v=oej3MVa_N0A&list=PLZH3u_BLcDWiX25S_5QdyvVj45k8tM7To&index=2"
+                        target="_blank" rel="noopener noreferrer"
+                        class="nav-btn video-btn"
+                    >
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 -960 960 960"
+                            class="nav-icon svg-icon"
+                        >
+
+                            <path d="M840-680q-11-40-42-71t-71-42q-61-17-247-17t-247 17q-40 11-71 42t-42 71q-17 61-17 200t17 200q11 40 42 71t71 42q61 17 247 17t247-17q40-11 71-42t42-71q17-61 17-200t-17-200Zm-460 360v-320l280 160-280 160Z"/>
+
+                        </svg>
+
+                        <span>
+                            祖父母經驗傳承影片
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- 鳳梨釋迦與大目釋迦比較 -->
+                <li>
+
+                    <a href="compare/index.html" class="nav-btn">
+
+                        <img
+                            src="lower_icon.webp"
+                            class="nav-icon icon-default"
+                         decoding="async" alt="" width="408" height="1037">
+
+                        <img
+                            src="open.webp"
+                            class="nav-icon icon-hover"
+                         decoding="async" alt="" width="1298" height="1600">
+
+                        <span>
+                            鳳梨釋迦與大目釋迦比較
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- 補苗嫁接 -->
+                <li>
+
+                    <a href="grafting/index.html" class="nav-btn">
+
+                        <img
+                            src="lower_icon.webp"
+                            class="nav-icon icon-default"
+                         decoding="async" alt="" width="408" height="1037">
+
+                        <img
+                            src="open.webp"
+                            class="nav-icon icon-hover"
+                         decoding="async" alt="" width="1298" height="1600">
+
+                        <span>
+                            補苗嫁接
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- 強剪與催芽 -->
+                <li>
+
+                    <a href="pruning/index.html" class="nav-btn">
+
+                        <img
+                            src="lower_icon.webp"
+                            class="nav-icon icon-default"
+                         decoding="async" alt="" width="408" height="1037">
+
+                        <img
+                            src="open.webp"
+                            class="nav-icon icon-hover"
+                         decoding="async" alt="" width="1298" height="1600">
+
+                        <span>
+                            強剪與催芽期
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- 花期與人工授粉 -->
+                <li>
+
+                    <a
+                        href="flowering-and-pollination/index.html"
+                        class="nav-btn"
+                    >
+
+                        <img
+                            src="lower_icon.webp"
+                            class="nav-icon icon-default"
+                         decoding="async" alt="" width="408" height="1037">
+
+                        <img
+                            src="open.webp"
+                            class="nav-icon icon-hover"
+                         decoding="async" alt="" width="1298" height="1600">
+
+                        <span>
+                            花期與人工授粉
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- 果實發育 -->
+                <li>
+
+                    <a
+                        href="fruit development/index.html"
+                        class="nav-btn"
+                    >
+
+                        <img
+                            src="lower_icon.webp"
+                            class="nav-icon icon-default"
+                         decoding="async" alt="" width="408" height="1037">
+
+                        <img
+                            src="open.webp"
+                            class="nav-icon icon-hover"
+                         decoding="async" alt="" width="1298" height="1600">
+
+                        <span>
+                            果實發育
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- 病蟲害防治與套袋 -->
+                <li>
+
+                    <a
+                        href="pest-control-and-bagging/index.html"
+                        class="nav-btn"
+                    >
+
+                        <img
+                            src="lower_icon.webp"
+                            class="nav-icon icon-default"
+                         decoding="async" alt="" width="408" height="1037">
+
+                        <img
+                            src="open.webp"
+                            class="nav-icon icon-hover"
+                         decoding="async" alt="" width="1298" height="1600">
+
+                        <span>
+                            病蟲害防治與套袋
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- 採收與分級 -->
+                <li>
+
+                    <a
+                        href="harvesting-and-grading/index.html"
+                        class="nav-btn"
+                    >
+
+                        <img
+                            src="lower_icon.webp"
+                            class="nav-icon icon-default"
+                         decoding="async" alt="" width="408" height="1037">
+
+                        <img
+                            src="open.webp"
+                            class="nav-icon icon-hover"
+                         decoding="async" alt="" width="1298" height="1600">
+
+                        <span>
+                            採收與分級
+                        </span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+        </nav>
+
+        <footer>
+            &copy; 柏涵鳳梨釋迦紀錄
+        </footer>
+
+    </div>
+
+<script src="site-enhancements.js" defer></script>
+<nav class="site-tools" aria-label="頁面導覽"><a href="index.html">回首頁</a><a href="#">回到頁首 ↑</a></nav>
+</body>
+</html>
