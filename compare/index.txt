@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鳳梨釋迦與大目釋迦之差異比較</title>
+    <style>
+        /* =========================================
+           全域重置與基礎設定
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", "Helvetica Neue", sans-serif;
+            background: radial-gradient(circle at top center, #1b4332, #081c15);
+            color: #e9ecef;
+            min-height: 100vh;
+            padding: 40px 20px 60px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* =========================================
+           返回按鈕樣式 (固定左上角 + 鮮明模式) 
+           ========================================= */
+        .back-btn {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #00f5d4, #06d6a0);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            color: #081c15;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(6, 214, 160, 0.6);
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #06d6a0, #00f5d4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(6, 214, 160, 0.9);
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover svg {
+            animation: bounceIcon 0.5s ease infinite alternate;
+        }
+
+        @keyframes bounceIcon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-3px); }
+        }
+
+        /* =========================================
+           標題區塊設計
+           ========================================= */
+        .header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding-top: 30px; 
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            color: #d8f3dc;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #95d5b2;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        /* 頂部快速說明標籤 */
+        .intro-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .intro-badge {
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .badge-pineapple {
+            background: linear-gradient(135deg, #7b2cbf, #5a189a);
+            color: #fff;
+            border: 1px solid #9d4edd;
+        }
+
+        .badge-bigeye {
+            background: linear-gradient(135deg, #2d6a4f, #1b4332);
+            color: #fff;
+            border: 1px solid #52b788;
+        }
+
+        /* =========================================
+           網格排版 (8張圖比較)
+           ========================================= */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           比較卡片專屬設計
+           ========================================= */
+        .card {
+            background: rgba(17, 25, 20, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(6, 214, 160, 0.25);
+            border-color: rgba(6, 214, 160, 0.6);
+        }
+
+        /* 卡片標題條 */
+        .card-header {
+            background: linear-gradient(90deg, #1f3d2b, #112318);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header h3 {
+            font-size: 1.35em;
+            color: #52b788;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header .step-num {
+            background: #52b788;
+            color: #081c15;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.9em;
+        }
+
+        /* 圖片容器 */
+        .img-container {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            background: #0d1510;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card:hover .img-container img {
+            transform: scale(1.08);
+        }
+
+        /* 圖片上方提示浮水印 */
+        .img-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.65);
+            color: #d8f3dc;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* =========================================
+           雙方差異文字對比區塊
+           ========================================= */
+        .compare-box {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            flex-grow: 1;
+        }
+
+        .compare-item {
+            padding: 12px 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* 鳳梨釋迦專屬特徵樣式 (紫色系) */
+        .item-pineapple {
+            background: rgba(123, 44, 191, 0.15);
+            border-left: 4px solid #9d4edd;
+        }
+
+        .item-pineapple .label {
+            color: #c77dff;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        /* 大目釋迦專屬特徵樣式 (綠色系) */
+        .item-bigeye {
+            background: rgba(82, 183, 136, 0.15);
+            border-left: 4px solid #52b788;
+        }
+
+        .item-bigeye .label {
+            color: #74c69d;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .desc-text {
+            color: #ffffff;
+            font-size: 1.05em;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* =========================================
+           底部補充小知識區塊
+           ========================================= */
+        .footer-tips {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            background: linear-gradient(135deg, rgba(27, 67, 50, 0.8), rgba(8, 28, 21, 0.9));
+            border: 1px solid #52b788;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .footer-tips h2 {
+            color: #00f5d4;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        .footer-tips p {
+            color: #d8f3dc;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           RWD 行動裝置排版優化
+           ========================================= */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px 40px;
+            }
+            .back-btn {
+                top: 15px;
+                left: 15px;
+                padding: 8px 16px;
+                font-size: 0.85em;
+            }
+            .header {
+                margin-bottom: 35px;
+                padding-top: 50px;
+            }
+            .header h1 { font-size: 2em; }
+            .header p { font-size: 1em; }
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .img-container { height: 220px; }
+            .compare-box {
+                grid-template-columns: 1fr; /* 手機版改為上下排列更有閱讀空間 */
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-btn" title="返回全紀錄">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span>返回全紀錄</span>
+    </a>
+
+    <header class="header">
+        <h1>鳳梨釋迦 與 大目釋迦</h1>
+        <p>八大核心差異全方位對比指南</p>
+        
+        <div class="intro-badges">
+            <div class="intro-badge badge-pineapple">
+                <span>🍍 鳳梨釋迦</span>
+                <small>(表皮平滑 / 冬季限定 / 刀切切塊)</small>
+            </div>
+            <div class="intro-badge badge-bigeye">
+                <span>🟢 大目釋迦</span>
+                <small>(鱗目明顯 / 一年兩期 / 手撥即食)</small>
+            </div>
+        </div>
+    </header>
+
+    <main class="gallery">
+        <!-- 1. 植株比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">1</span> 植株比較</h3>
+            </div>
+            <div class="img-container">
+                <!-- 請將此處屬性修改為您真實的圖片路徑 -->
+                <img src="compare_plant.webp" alt="植株比較">
+                <span class="img-tag">樹勢形態</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">樹勢較強健</span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">枝條較細小</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 葉面比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">2</span> 葉面比較</h3>
+            </div>
+            <div class="img-container">
+                <img src="compare_leaf.webp" alt="葉面比較">
+                <span class="img-tag">葉片特徵</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">較大且柔軟</span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">較小且較硬</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 花朵比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">3</span> 花朵比較</h3>
+            </div>
+            <div class="img-container">
+                <img src="compare_flower.webp" alt="花朵比較">
+                <span class="img-tag">花瓣外觀</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">花瓣較長較軟</span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">花瓣較硬較黃</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 花蕊比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">4</span> 花蕊比較</h3>
+            </div>
+            <div class="img-container">
+                <img src="compare_stamen.webp" alt="花蕊比較">
+                <span class="img-tag">授粉時機</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">傍晚雄蕊成熟</span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">早上雄蕊成熟</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 幼果比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">5</span> 幼果比較</h3>
+            </div>
+            <div class="img-container">
+                <img src="compare_young_fruit.webp" alt="幼果比較">
+                <span class="img-tag">早期果實</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">鱗目平滑緊密相連</span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">鱗目明顯顆粒凸起</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. 中果比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">6</span> 中果比較</h3>
+            </div>
+            <div class="img-container">
+                <img src="compare_mid_fruit.webp" alt="中果比較">
+                <span class="img-tag">發育中期</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">果表突起平緩合一</span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">鱗目深縫合線清晰</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. 產期比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">7</span> 產期比較</h3>
+            </div>
+            <div class="img-container">
+                <img src="compare_season.webp" alt="產期比較">
+                <span class="img-tag">收成特點</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">一年只能做一期果<br><small style="color:#e0a96d;">(以冬季產期為主)</small></span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">一年能做兩期果<br><small style="color:#e0a96d;">(夏秋果與冬季果)</small></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. 食用方式比較 -->
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="step-num">8</span> 食用方式比較</h3>
+            </div>
+            <div class="img-container">
+                <img src="compare_eat.webp" alt="食用方式比較">
+                <span class="img-tag">最佳品嚐法</span>
+            </div>
+            <div class="compare-box">
+                <div class="compare-item item-pineapple">
+                    <span class="label">🍍 鳳梨釋迦</span>
+                    <span class="desc-text">用刀切片/切塊<br><small style="color:#ffd166;">觸感如「橡皮擦軟度」時食用糖份最剛好</small></span>
+                </div>
+                <div class="compare-item item-bigeye">
+                    <span class="label">🟢 大目釋迦</span>
+                    <span class="desc-text">用手直接撥開即可<br><small style="color:#ffd166;">熟軟時沿縫合線輕鬆剝開品嚐</small></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-tips">
+        <h2>💡 釋迦小百科與保存貼士</h2>
+        <p>
+            不管是「鳳梨釋迦」還是「大目釋迦」，買回家後在<b>尚未變軟成熟前，絕對不可放入冰箱冷藏</b>，否則會發生「啞巴果（後熟停止）」現象導致無法變軟喔！<br>
+            請放置於室溫通風處，待摸起來有微軟彈性時，即可享用極致香甜的美味，或放冰箱冷藏後食用風味更佳！
+        </p>
+    </footer>
+
+</body>
+</html>

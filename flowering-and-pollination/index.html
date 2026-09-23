@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大目釋迦授粉作業紀錄</title>
+    <style>
+        /* =========================================
+           全域重置與基礎設定
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", "Helvetica Neue", sans-serif;
+            background: radial-gradient(circle at top center, #1b4332, #081c15);
+            color: #e9ecef;
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* =========================================
+           返回按鈕樣式 (固定左上角 + 鮮明模式) 
+           ========================================= */
+        .back-btn {
+            position: fixed; /* 改為 fixed，無論如何滑動都會固定在視窗上 */
+            top: 25px;
+            left: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            /* 鮮明模式：高對比螢光青綠色漸層 */
+            background: linear-gradient(135deg, #00f5d4, #06d6a0);
+            border: 2px solid rgba(255, 255, 255, 0.9); /* 加上白邊框增加立體感與識別度 */
+            border-radius: 30px;
+            color: #081c15; /* 深色文字確保對比度與易讀性 */
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 700; /* 加粗字體 */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            /* 強烈的發光陰影，在深色背景中更跳脫 */
+            box-shadow: 0 4px 20px rgba(6, 214, 160, 0.6);
+            z-index: 9999; /* 確保按鈕永遠在最上層，不會被圖片遮擋 */
+            backdrop-filter: blur(5px);
+        }
+
+        /* 返回按鈕滑鼠懸停特效 */
+        .back-btn:hover {
+            background: linear-gradient(135deg, #06d6a0, #00f5d4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(6, 214, 160, 0.9);
+        }
+
+        /* SVG 屋子圖示大小與顏色控制 */
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        /* 滑鼠懸停時，屋子圖示產生上下跳動的小動畫 */
+        .back-btn:hover svg {
+            animation: bounceIcon 0.5s ease infinite alternate;
+        }
+
+        @keyframes bounceIcon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-3px); }
+        }
+
+        /* =========================================
+           標題區塊設計
+           ========================================= */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 20px; 
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            color: #d8f3dc;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #95d5b2;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           網格排版 (RWD)
+           ========================================= */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           卡片容器與圖片特效
+           ========================================= */
+        .card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* 滑鼠懸停時圖片放大 */
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* =========================================
+           文字說明遮罩層
+           ========================================= */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 25px 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .overlay h3 {
+            font-size: 1.25em;
+            font-weight: 500;
+            color: #ffffff;
+            margin: 0;
+            border-left: 4px solid #52b788;
+            padding-left: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.4;
+        }
+
+        /* 滑鼠懸停時文字層微升 */
+        .card:hover .overlay {
+            transform: translateY(0);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+        }
+
+        /* =========================================
+           RWD 行動裝置排版優化
+           ========================================= */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 20px 30px;
+            }
+            .back-btn {
+                /* 手機版依然保持固定，稍微縮小並靠向邊緣 */
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                padding: 8px 18px;
+                font-size: 0.9em;
+            }
+            .header {
+                margin-bottom: 40px;
+                padding-top: 60px; /* 增加上方留白，避免標題被固定的按鈕遮擋 */
+            }
+            .header h1 { font-size: 2.2em; }
+            .card img { height: 280px; }
+            .overlay { transform: translateY(0); }
+        }
+    </style>
+<link rel="stylesheet" href="../site-enhancements.css">
+</head>
+<body>
+
+    <a href="../index.html" class="back-btn" title="返回全紀錄">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span>返回全紀錄</span>
+    </a>
+
+    <header class="header">
+        <h1>大目釋迦授粉作業紀錄</h1>
+        <p>記錄大目釋迦人工授粉完整流程，從採花、取粉到授粉與成功著果觀察</p>
+    </header>
+
+    <main class="gallery">
+        <div class="card">
+            <img src="a1.webp" alt="1. 大目釋迦花" decoding="async" width="2400" height="1800" loading="eager" fetchpriority="high">
+            <div class="overlay">
+                <h3>1. 大目釋迦花</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a2.webp" alt="2. 採集花瓣張開角度大，雄蕊隔夜清晨品質最佳" decoding="async" width="2400" height="1800">
+            <div class="overlay">
+                <h3>2. 採集花瓣張開角度大，雄蕊隔夜清晨品質最佳</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a3.webp" alt="3. 傍晚採大目釋迦花，花朵在頭燈照耀下特別金黃明顯" decoding="async" width="2400" height="1800">
+            <div class="overlay">
+                <h3>3. 傍晚採大目釋迦花，花朵在頭燈照耀下特別金黃明顯</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a4.webp" alt="4. 置放於紗網盤上" decoding="async" width="2400" height="1800">
+            <div class="overlay">
+                <h3>4. 置放於紗網盤上</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a5.webp" alt="5. 去除三花瓣，置於底放衛生紙容器中" decoding="async" width="1800" height="2400">
+            <div class="overlay">
+                <h3>5. 去除三片花瓣，置於底部鋪有衛生紙的容器中</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a6.webp" alt="6. 隔日清晨雄蕊已成熟" decoding="async" width="720" height="1280">
+            <div class="overlay">
+                <h3>6. 隔日清晨雄蕊已成熟</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a7.webp" alt="7. 取粉完成" decoding="async" width="700" height="985">
+            <div class="overlay">
+                <h3>7. 不夠細，再篩一次，去掉花絲</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a8.webp" alt="8. 裝瓶" decoding="async" width="720" height="1280">
+            <div class="overlay">
+                <h3>8. 裝瓶</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a9.webp" alt="9. 授粉工具--吸管" decoding="async" width="1800" height="2400">
+            <div class="overlay">
+                <h3>9. 授粉工具－吸管</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a10.webp" alt="10. 找到此型花，最佳授粉狀態" decoding="async" width="1800" height="2400">
+            <div class="overlay">
+                <h3>10. 找到此型花，柱頭濕潤，最佳授粉狀態</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a11.webp" alt="11. 柱頭濕潤，雄蕊尚未成熟" decoding="async" width="2400" height="1800">
+            <div class="overlay">
+                <h3>11. 柱頭濕潤，雄蕊尚未成熟</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a12.webp" alt="12. 略扳開花瓣，將吸管套住柱頭，上推花粉" decoding="async" width="2400" height="1800">
+            <div class="overlay">
+                <h3>12. 略扳開花瓣，將吸管套住柱頭，上推花粉</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a13.webp" alt="13. 柱頭授粉成功" decoding="async" width="2400" height="1800">
+            <div class="overlay">
+                <h3>13. 柱頭授粉完成</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a14.webp" alt="14. 去除一半花瓣以示已授粉" decoding="async" width="1540" height="1474">
+            <div class="overlay">
+                <h3>14. 去除一半花瓣以示已授粉</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="a15.webp" alt="15. 授粉完成隔天花朵" decoding="async" width="2400" height="1800">
+            <div class="overlay">
+                <h3>15. 授粉完成隔天花朵</h3>
+            </div>
+        </div>
+    </main>
+
+<script src="../site-enhancements.js" defer></script>
+<nav class="site-tools" aria-label="頁面導覽"><a href="../index.html">回首頁</a><a href="#">回到頁首 ↑</a></nav>
+</body>
+</html>
