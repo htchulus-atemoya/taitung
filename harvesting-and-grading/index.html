@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剪釋迦、載運與選果完整紀實 - 柏涵鳳梨釋迦</title>
+    <style>
+        /* =========================================
+           全域重置與基礎設定 (Index2 墨綠風格)
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", "Helvetica Neue", sans-serif;
+            background: radial-gradient(circle at top center, #1b4332, #081c15);
+            color: #e9ecef;
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* =========================================
+           返回按鈕樣式 (固定左上角 + 鮮明亮綠) 
+           ========================================= */
+        .back-btn {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #00f5d4, #06d6a0);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            color: #081c15;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(6, 214, 160, 0.6);
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #06d6a0, #00f5d4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(6, 214, 160, 0.9);
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover svg {
+            animation: bounceIcon 0.5s ease infinite alternate;
+        }
+
+        @keyframes bounceIcon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-3px); }
+        }
+
+        /* =========================================
+           標題區塊設計
+           ========================================= */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 20px; 
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            color: #d8f3dc;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #95d5b2;
+            letter-spacing: 1px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           主要內容與階段標題設定
+           ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stage-section {
+            margin-bottom: 50px;
+        }
+
+        .stage-title {
+            font-size: 1.6em;
+            color: #52b788;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 5px solid #00f5d4;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        /* =========================================
+           網格排版 (RWD)
+           ========================================= */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* =========================================
+           卡片容器與圖片放大特效
+           ========================================= */
+        .card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* =========================================
+           文字說明遮罩層與步驟標籤
+           ========================================= */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 25px 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .overlay h3 {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #ffffff;
+            margin: 0;
+            border-left: 4px solid #52b788;
+            padding-left: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-badge {
+            background: linear-gradient(135deg, #00f5d4, #06d6a0);
+            color: #081c15;
+            font-weight: 800;
+            font-size: 0.85em;
+            padding: 2px 9px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .card:hover .overlay {
+            transform: translateY(0);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+        }
+
+        /* =========================================
+           頁尾設定
+           ========================================= */
+        .site-footer {
+            text-align: center;
+            padding: 30px 20px 10px;
+            color: #74c69d;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           RWD 行動裝置排版優化
+           ========================================= */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 20px 30px;
+            }
+            .back-btn {
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                padding: 8px 18px;
+                font-size: 0.9em;
+            }
+            .header {
+                margin-bottom: 40px;
+                padding-top: 60px;
+            }
+            .header h1 { font-size: 2.2em; }
+            .stage-title { font-size: 1.3em; }
+            .card img { height: 280px; }
+            .overlay { transform: translateY(0); }
+        }
+    </style>
+<link rel="stylesheet" href="../site-enhancements.css">
+</head>
+<body>
+
+    <!-- 返回主頁按鈕 -->
+    <a href="../index.html" class="back-btn" title="返回主頁面">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span>返回主頁面</span>
+    </a>
+
+    <!-- 頁首標題區 -->
+    <header class="header">
+        <h1>剪釋迦、載運與選果紀實</h1>
+        <p>從採收，到裝載運送，最後進行分級選果的完整流程，每一步都堅持品質把關。</p>
+    </header>
+
+    <main class="container">
+        <!-- 第一階段：剪果與採收 -->
+        <section class="stage-section">
+            <h2 class="stage-title">第一階段：剪果與採收</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="20260228_093426+0800-uid-256EC003-C9CC-4FBD-9D6D-489D8F2C1DEA-8787788.webp" alt="剪下成熟釋迦" decoding="async" width="4032" height="3024" loading="eager" fetchpriority="high">
+                    <div class="overlay">
+                        <h3><span class="step-badge">1</span> 確認達標後剪下成熟釋迦</h3>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="20260228_094629+0800-uid-1C554F9D-4C25-44CD-9F10-7D6752DB77EA-11714975.webp" alt="豐收採果樂" decoding="async" width="4032" height="3024">
+                    <div class="overlay">
+                        <h3><span class="step-badge">2</span> 祖孫豐收採果樂，將鮮果裝籃</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二階段：裝載與運送 -->
+        <section class="stage-section">
+            <h2 class="stage-title">第二階段：裝載與運送</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="20260228_091308+0800-uid-783BFCBA-77FF-4E16-B262-F20506D98C69-14091280.webp" alt="農用搬運車田間搬運" decoding="async" width="4032" height="3024">
+                    <div class="overlay">
+                        <h3><span class="step-badge">3</span> 使用農用搬運車田間搬運</h3>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="20260228_091931+0800-uid-36D0D82E-8540-4457-B8F4-07B154DB5C36-8436833.webp" alt="轉至貨車載運回家" decoding="async" width="4032" height="3024">
+                    <div class="overlay">
+                        <h3><span class="step-badge">4</span> 轉至貨車載運回家</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三階段：分級與選果 -->
+        <section class="stage-section">
+            <h2 class="stage-title">第三階段：分級與選果</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="20260228_104252+0800-uid-10A321AF-5D29-481F-B9AA-7C64840CD490-10212205.webp" alt="初步選果" decoding="async" width="4032" height="3024">
+                    <div class="overlay">
+                        <h3><span class="step-badge">5</span> 解開套袋並依等級選果</h3>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="20260228_110145+0800-uid-7CA98F7E-2F5F-44E7-A04B-45434133C774-10234710.webp" alt="依等級分裝" decoding="async" width="4032" height="3024">
+                    <div class="overlay">
+                        <h3><span class="step-badge">6</span> 再套蔬果網並裝箱出貨</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            &copy; 2026 柏涵鳳梨釋迦紀錄
+        </footer>
+    </main>
+
+<script src="../site-enhancements.js" defer></script>
+<nav class="site-tools" aria-label="頁面導覽"><a href="../index.html">回首頁</a><a href="#">回到頁首 ↑</a></nav>
+</body>
+</html>

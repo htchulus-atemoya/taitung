@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>補苗與嫁接完整紀實 - 柏涵鳳梨釋迦</title>
+    <style>
+        /* =========================================
+           全域重置與基礎設定
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", "Helvetica Neue", sans-serif;
+            background: radial-gradient(circle at top center, #1b4332, #081c15);
+            color: #e9ecef;
+            min-height: 100vh;
+            padding: 40px 20px 60px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* =========================================
+           返回按鈕樣式 (固定左上角 + 鮮明模式) 
+           ========================================= */
+        .back-btn {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #00f5d4, #06d6a0);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            color: #081c15;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(6, 214, 160, 0.6);
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #06d6a0, #00f5d4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(6, 214, 160, 0.9);
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover svg {
+            animation: bounceIcon 0.5s ease infinite alternate;
+        }
+
+        @keyframes bounceIcon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-3px); }
+        }
+
+        /* =========================================
+           標題區塊設計
+           ========================================= */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 20px; 
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            color: #d8f3dc;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #95d5b2;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           主容器與分區標題
+           ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #74c69d;
+            border-bottom: 2px solid rgba(82, 183, 136, 0.3);
+            padding-bottom: 12px;
+            margin: 40px 0 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 26px;
+            background: #52b788;
+            border-radius: 3px;
+        }
+
+        .container .section-title:first-child {
+            margin-top: 0;
+        }
+
+        /* =========================================
+           網格排版 (RWD)
+           ========================================= */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* =========================================
+           卡片容器與圖片特效
+           ========================================= */
+        .card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(82, 183, 136, 0.5);
+            box-shadow: 0 20px 40px rgba(6, 214, 160, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* =========================================
+           文字說明遮罩層
+           ========================================= */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 35px 25px 22px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.65) 70%, transparent 100%);
+            transform: translateY(5px);
+            transition: all 0.4s ease;
+        }
+
+        .overlay h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+            border-left: 4px solid #52b788;
+            padding-left: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-badge {
+            background: #52b788;
+            color: #081c15;
+            font-size: 0.8em;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .overlay p {
+            font-size: 0.92em;
+            color: #b7e4c7;
+            margin-top: 8px;
+            padding-left: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .card:hover .overlay {
+            transform: translateY(0);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.75) 75%, transparent 100%);
+        }
+
+        /* =========================================
+           頁尾設計
+           ========================================= */
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            font-size: 0.95em;
+            color: #74c69d;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* =========================================
+           RWD 行動裝置排版優化
+           ========================================= */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px 30px;
+            }
+            .back-btn {
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                padding: 8px 18px;
+                font-size: 0.9em;
+            }
+            .header {
+                margin-bottom: 30px;
+                padding-top: 60px;
+            }
+            .header h1 { font-size: 2.2em; }
+            .header p { font-size: 1.0em; }
+            .section-title { font-size: 1.5em; margin: 30px 0 20px; }
+            .card img { height: 280px; }
+            .overlay { transform: translateY(0); padding: 25px 20px 20px; }
+        }
+    </style>
+<link rel="stylesheet" href="../site-enhancements.css">
+</head>
+<body>
+
+    <!-- 固定左上角鮮明模式返回按鈕 -->
+    <a href="../index.html" class="back-btn" title="返回全紀錄">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span>返回全紀錄</span>
+    </a>
+
+    <!-- 標題區塊 -->
+    <header class="header">
+        <h1>補苗與嫁接完整紀實</h1>
+        <p>柏涵鳳梨釋迦 — 紀錄果園補苗、嫁接實作流程與後續生長觀察</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- 第一區塊：實作流程說明 -->
+        <h2 class="section-title">實作流程說明</h2>
+        <div class="gallery">
+            
+            <div class="card">
+                <img src="20260315_091639+0800-uid-21014DA8-E2BD-46A1-8A95-28FC117D52FA-13616146.webp" alt="1. 購買好苗" decoding="async" width="4032" height="3024" loading="eager" fetchpriority="high">
+                <div class="overlay">
+                    <h3><span class="step-badge">1</span> 購買好苗</h3>
+                    <p>挑選健康強壯的果苗，確保果園的優良根基。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="20260315_083804+0800-uid-8CDD42FE-B1E5-4163-8E61-A37D12542F9B-18966849.webp" alt="2. 挖洞" decoding="async" width="4032" height="3024">
+                <div class="overlay">
+                    <h3><span class="step-badge">2</span> 挖洞</h3>
+                    <p>挑選合適位置挖掘深度適當的植樹坑。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="tree.webp" alt="3. 種樹苗" decoding="async" width="974" height="765">
+                <div class="overlay">
+                    <h3><span class="step-badge">3</span> 種樹苗</h3>
+                    <p>將樹苗端正放入坑中，覆土澆濕讓根系發育。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="20260307_094139+0800-uid-8E9EC8FA-CDA8-4A64-B053-7787BF4658B3-12436368.webp" alt="4. 剪去實生枝" decoding="async" width="4032" height="3024">
+                <div class="overlay">
+                    <h3><span class="step-badge">4</span> 剪去實生枝</h3>
+                    <p>將多餘實生枝條剪除，準備作為嫁接砧木。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="20260307_095416+0800-uid-8C0F5D73-E731-4D40-A73C-E233CEEAAC51-8266999.webp" alt="5. 選穗" decoding="async" width="3024" height="2268">
+                <div class="overlay">
+                    <h3><span class="step-badge">5</span> 選穗</h3>
+                    <p>挑選芽眼飽滿的優良接穗。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="20260307_094414+0800-uid-E061080E-F60B-436E-9E11-3906E7BFB9EA-7588534.webp" alt="6. 切接" decoding="async" width="3024" height="4032">
+                <div class="overlay">
+                    <h3><span class="step-badge">6</span> 切接</h3>
+                    <p>精準切開砧木與削好接穗，使砧木與接穗的形成層盡量對齊。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="20260307_101634+0800-uid-44A19802-6872-46A4-947A-FF36230B92EF-7314376.webp" alt="7. 纏繞石蠟膜" decoding="async" width="3024" height="4032">
+                <div class="overlay">
+                    <h3><span class="step-badge">7</span> 纏繞石蠟膜</h3>
+                    <p>用膠帶緊密固定接穗，並纏繞石蠟膜以達到絕佳保濕效果。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="20260307_102234+0800-uid-6D4CE4B7-661C-4CFE-AB90-2442A7FD1332-9650990.webp" alt="8. 套袋" decoding="async" width="3024" height="4032">
+                <div class="overlay">
+                    <h3><span class="step-badge">8</span> 套袋</h3>
+                    <p>外部套上防護紙袋，防曬防蟲害，等待新芽萌發。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 第二區塊：嫁接後生長紀錄 -->
+        <h2 class="section-title">嫁接後生長紀錄</h2>
+        <div class="gallery">
+
+            <div class="card">
+                <img src="20d2.3cm.webp" alt="20天 長度 2.3 cm" decoding="async" width="2400" height="2130">
+                <div class="overlay">
+                    <h3><span class="step-badge">20天</span> 長度 2.3 cm</h3>
+                    <p>突破重圍，新芽萌發，測量長度約 2.3 公分。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="30d5cm.webp" alt="30天 長度 5 cm" decoding="async" width="2400" height="1800">
+                <div class="overlay">
+                    <h3><span class="step-badge">30天</span> 長度 5 cm</h3>
+                    <p>穩定抽長，展現生機，測量長度約 5 公分。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="60d30cm.webp" alt="60天 長度超過 30 cm" decoding="async" width="1800" height="2400">
+                <div class="overlay">
+                    <h3><span class="step-badge">60天</span> 長度超過 30 cm</h3>
+                    <p>枝葉開始茂盛，生長迅速，測量長度超過 30 公分。</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        &copy; 2026 柏涵鳳梨釋迦紀錄
+    </footer>
+
+<script src="../site-enhancements.js" defer></script>
+<nav class="site-tools" aria-label="頁面導覽"><a href="../index.html">回首頁</a><a href="#">回到頁首 ↑</a></nav>
+</body>
+</html>
